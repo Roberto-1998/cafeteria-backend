@@ -24,6 +24,30 @@ const getProductos = async(req, res = response) => {
 
 }
 
+const getProductoById = async(req, res = response) => {
+
+    const { id } = req.params;
+    console.log(id);
+
+    try {
+        const product = await Producto.findById(id);
+        res.json({
+            ok: true,
+            msg: 'GetProductoById',
+            product
+        })
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Error no validado por el backend'
+        })
+    }
+
+}
+
 const crearProducto = async(req, res = response) => {
 
     const { name } = req.body;
@@ -107,5 +131,6 @@ module.exports = {
     getProductos,
     actualizarProducto,
     crearProducto,
-    borrarProductos
+    borrarProductos,
+    getProductoById
 }
