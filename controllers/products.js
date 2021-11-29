@@ -27,7 +27,6 @@ const getProductos = async(req, res = response) => {
 const getProductoById = async(req, res = response) => {
 
     const { id } = req.params;
-    console.log(id);
 
     try {
         const product = await Producto.findById(id);
@@ -50,7 +49,7 @@ const getProductoById = async(req, res = response) => {
 
 const crearProducto = async(req, res = response) => {
 
-    const { name } = req.body;
+
 
     try {
 

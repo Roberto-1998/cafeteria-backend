@@ -23,9 +23,17 @@ router.post('/', [
     validarCampos
 ], crearProducto);
 
-router.put('/:id', actualizarProducto);
+router.put('/:id', [
+    check('id', 'No es un id válido').isMongoId(),
+    check('id').custom(existeProductoById),
+    validarCampos
+], actualizarProducto);
 
-router.delete('/:id', borrarProductos);
+router.delete('/:id', [
+    check('id', 'No es un id válido').isMongoId(),
+    check('id').custom(existeProductoById),
+    validarCampos
+], borrarProductos);
 
 
 

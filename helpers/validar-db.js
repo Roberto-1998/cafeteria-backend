@@ -1,5 +1,3 @@
-const res = require('express/lib/response');
-const product = require('../models/product');
 const Producto = require('../models/product');
 
 const existeProducto = async(name) => {
